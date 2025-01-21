@@ -51,7 +51,9 @@ Blue orthogonal shapes denote the algorithm’s steps, while the pink one denote
 ## Tutorial for implementing the tools
 
 **Model Training in R**
-The code for creating the 5 models, one for each parameter (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be found in the directory 
+The code for creating the 5 models, one for each parameter (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be found in the directory scripts. 'gdgdf.py'
+
+
 **Prediction Tool**
 
 **Optimization Tool**
