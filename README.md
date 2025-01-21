@@ -110,12 +110,26 @@ The Optimization Tool refines scaffold parameters to meet user-defined property 
 | `--population`     | Number of individuals in the optimization population       | 50            |
 | `--generations`    | Maximum number of generations for the optimization process | 300           |
 
-
 **Outputs:**
-- A CSV file (`unique_solutions.csv`) which includes the unique solutions of the optimization process. Specifically, each row corresponds to a specific solution, representing a unique scaffold configuration that has been evaluated.
-- A CSV file (`final_predictions_vs_desired.csv`)  where each row corresponds to the specific solution (of the first tab). For each solution, the model provides predictions for important scaffold properties and the corresponding desired values for these properties, as set by the user. For each property, the table also includes an absolute error column, which represents the difference between the predicted values and the desired values.
-- A graph (`AvgOfAvgGoalsPerGen_plot.png`) that shows the average performance improving across generations. At the point the graph starts to stabilize it means that the algorithm is finding better solutions over time.
-- A graph (`BestPerformancePerGen_plot.png`) that shows the best performance per generation.
+- **CSV Outputs:**
+  - `unique_solutions.csv`: Contains unique scaffold configurations, with each row representing a solution evaluated during optimization.
+  - `final_predictions_vs_desired.csv`: Provides predictions for scaffold properties alongside user-defined targets, including absolute errors for each property.
+- **Graph Outputs:**
+  - `AvgOfAvgGoalsPerGen_plot.png`: Visualizes the average performance of the population across generations. Stabilization indicates convergence toward optimal solutions.
+  - `BestPerformancePerGen_plot.png`: Tracks the best-performing individual per generation, showcasing iterative improvement.
+---
+## Installation Instructions
+Ensure you have the following installed on your system:
+- **Python 3.8+**
+- **R 4.0+**
+
+Install the required Python libraries:
+
+    pip install -r requirements.txt
+
+RStudio and install the required packages:
+
+    install.packages(c("glmnet", "caret", "e1071"))
 
 ---
 
