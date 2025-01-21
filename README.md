@@ -51,56 +51,48 @@ Blue orthogonal shapes denote the algorithm’s steps, while the pink one denote
 
 ## Tutorial for implementing the tools
 
-**Model Training in R:**
+**a. Model Training in R:**
 
-The code for creating the 5 models, one for each parameter (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be found in the directory scripts. 'gdgdf.py'
+The Elastic Net Regression models for scaffold properties (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be trained using the R script provided in the scripts/ directory.
 
-**Prediction Tool:**
+To train the models:
 
-To run the prediction tool, refer to the Python script located in the scripts/ directory (scaffold_optimization.py). 
+- Navigate to the scripts/ directory.
+- Execute the R script (train_models.R) with the required input data.
 
-Command (bash):
+**b. Prediction Tool:**
+
+The Prediction Tool forecasts scaffold properties based on user-provided scaffold design parameters.
+
+To use the Prediction Tool, run the following command (bash):
 
     python3 scaffold_optimization.py --sphere_diameter 0.4 --sphere_distance 0.4 --delaunay_mesh 0.21 --delaunay_spacing 0.1 --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder
 
-where folder is the folder you want to save your results, model_folder is the folder where the R models are stored, scaling_folder is the folder where scaling parameters are stored.
+**Arguments:**
+- **sphere_diameter, sphere_distance, delaunay_mesh, delaunay_spacing:** Input scaffold design parameters.
+- **output_folder:** Directory to save prediction results.
+- **model_dir:** Directory containing the trained R models.
+- **scaling_dir:** Directory containing scaling parameters for preprocessing inputs.
 
-**Optimization Tool:**
+The output will be stored in the specified output_folder with predictions for scaffold properties.
 
-Command (bash):
+**c. Optimization Tool:**
+
+The Optimization Tool refines scaffold parameters to meet user-defined property targets using a heuristic genetic algorithm.
+
+To use the Optimization Tool, run the following command (bash):
 
     python3 scaffold_optimization.py --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder --desired_outputs  12 70 8 0.05 0.4 --population 10 --generations 20
 
-where folder is the folder you want to save your results, model_folder is the folder where the R models are stored, scaling_folder is the folder where scaling parameters are stored.
+**Arguments:**
+- **output_folder:** Directory to save prediction results.
+- **model_dir:** Directory containing the trained R models.
+- **scaling_dir:** Directory containing scaling parameters for preprocessing inputs.
+- desired_outputs: Target values for scaffold properties, provided as space-separated numbers.
+  -  Example: **12 70 8 0.05 0.4** for Area-to-Volume Ratio, Bone Porosity, Connectivity Density, Trabecular Thickness and Trabecular Spacing.
+-  **population:** Number of individuals in the population (default is 50).
+-  **generations:** Maximum number of generations for the optimization algorithm (default is 300).
 
-Optimization Tool
-The Optimization Tool refines scaffold parameters to meet user-defined property targets using a heuristic genetic algorithm.
-
-To use the Optimization Tool, run the following command:
-
-bash
-Αντιγραφή
-Επεξεργασία
-python3 scaffold_optimization.py \
-    --output_folder /PATH/folder/ \
-    --model_dir /PATH/model_folder/ \
-    --scaling_dir /PATH/scaling_folder/ \
-    --desired_outputs 12 70 8 0.05 0.4 \
-    --population 10 \
-    --generations 20
-Arguments:
-output_folder: Directory to save optimization results.
-model_dir: Directory containing the trained R models.
-scaling_dir: Directory containing scaling parameters for preprocessing inputs.
-desired_outputs: Target values for scaffold properties, provided as space-separated numbers.
-Example: 12 70 8 0.05 0.4 for Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, and Trabecular Thickness.
-population: Number of individuals in the population.
-generations: Maximum number of generations for the optimization algorithm.
-The tool generates results that include:
-
-A Pareto front of optimal solutions.
-Detailed metrics for each solution, including predicted values and errors.
-Results are saved in the specified output_folder.
 ## Acknowledgements
 The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/), under the Marie Sklodowska-Curie Grant Agreement Action (No. 101086329). 
   ![image](https://github.com/user-attachments/assets/6ae3e457-66b5-4086-a513-7b50a9c24356) 
