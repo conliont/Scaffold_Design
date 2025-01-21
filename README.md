@@ -7,15 +7,15 @@ This repository contains the implementation of **Scaffold Design Tool**, a machi
 
 - **Optimization Tool:** Utilizes a heuristic genetic algorithm to refine scaffold       parameters, enabling users to achieve desired design outcomes.
 
-The tools are packaged in a user-friendly web interface, providing researchers with an accessible platform to design scaffolds that replicate the structural characteristics of healthy and pathological bone tissue.
+The tools are packaged in a user-friendly web interface (https://diagnostics.insybio.com/), providing researchers with an accessible platform to design scaffolds that replicate the structural characteristics of healthy and pathological bone tissue.
 
 ## Key Features
 
 - **Prediction Tool:**
   - Developed using Elastic Net Regression models for robust prediction of scaffold properties.
   - Predicts key parameters such as:
-    -    Bone Porosity
-    -    Area-to-Volume Ratio
+    -   Bone Porosity
+    -   Area-to-Volume Ratio
     -   Connectivity Density
     -   Trabecular Spacing
     -   Trabecular Thickness
@@ -30,7 +30,7 @@ The tools are packaged in a user-friendly web interface, providing researchers w
   - Features an intuitive user interface for defining optimization parameters, visualizing the optimization process, and analyzing final configurations.
  
 ## Technical Details or System Architecture
-
+r 
 - **Backend**: PHP 8.1 using Yii 1.1 Framework
 - **Optimization Algorithms**: Python-based, integrated with PHP through APIs
 - **Frontend**: JavaScript with HTML/CSS
@@ -47,6 +47,14 @@ The scaffold parameters are used as input into MeshMixer (blue orthogonal box) f
 ![image](https://github.com/user-attachments/assets/e31f0847-8881-465f-b5d3-3a9228ae160d)
 
 Blue orthogonal shapes denote the algorithm’s steps, while the pink one denotes the output (Pareto Front). The light blue rhomboid denotes the termination criterion (number of generations reached). White orthogonal shapes denote a simplified example of an EA’s chromosome (scaffold configurations). The chromosome consists of the Sphere Diameter (SDm), Sphere Distance (SD), Delaunay Mesh Dimension (DMD), and Delaunay Point Spacing (DPS) variables (presented from left to right). Their range of values is indicated in the brackets above them. 
+
+## Tutorial for implementing the tools
+
+**Model Training in R**
+The code for creating the 5 models, one for each parameter (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be found in the directory 
+**Prediction Tool**
+
+**Optimization Tool**
 
 ## Acknowledgements
 The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/), under the Marie Sklodowska-Curie Grant Agreement Action (No. 101086329). 
