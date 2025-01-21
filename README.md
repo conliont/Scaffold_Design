@@ -88,7 +88,7 @@ To use the Optimization Tool, run the following command (bash):
 - **output_folder:** Directory to save prediction results.
 - **model_dir:** Directory containing the trained R models.
 - **scaling_dir:** Directory containing scaling parameters for preprocessing inputs.
-- desired_outputs: Target values for scaffold properties, provided as space-separated numbers.
+- **desired_outputs:** Target values for scaffold properties, provided as space-separated numbers.
   -  Example: **12 70 8 0.05 0.4** for Area-to-Volume Ratio, Bone Porosity, Connectivity Density, Trabecular Thickness and Trabecular Spacing.
 -  **population:** Number of individuals in the population (default is 50).
 -  **generations:** Maximum number of generations for the optimization algorithm (default is 300).
