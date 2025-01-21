@@ -53,11 +53,11 @@ Blue orthogonal shapes denote the algorithm’s steps, while the pink one denote
 
 **a. Model Training in R:**
 
-The Elastic Net Regression models for scaffold properties (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be trained using the R script provided in the scripts/ directory.
+The Elastic Net Regression models for scaffold properties (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be trained using the R script provided in the `scripts/` directory.
 
 To train the models:
 
-- Navigate to the scripts/ directory.
+- Navigate to the `scripts/` directory.
 - Execute the R script (train_models.R) with the required input data.
 
 **b. Prediction Tool:**
@@ -68,13 +68,17 @@ To use the Prediction Tool, run the following command (bash):
 
     python3 scaffold_optimization.py --sphere_diameter 0.4 --sphere_distance 0.4 --delaunay_mesh 0.21 --delaunay_spacing 0.1 --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder
 
-**Arguments:**
-- **sphere_diameter, sphere_distance, delaunay_mesh, delaunay_spacing:** Input scaffold design parameters.
-- **output_folder:** Directory to save prediction results.
-- **model_dir:** Directory containing the trained R models.
-- **scaling_dir:** Directory containing scaling parameters for preprocessing inputs.
+| Argument           | Description                                                | Default Value / Range of Values |
+|--------------------|------------------------------------------------------------|---------------|
+| `--output_folder`  | Directory to save optimization results                     | Required      |
+| `--model_dir`      | Path to trained R models                                   | Required      |
+| `--scaling_dir`    | Path to scaling parameters                                 | Required      |
+| `--sphere_diameter`| Input scaffold design parameter      | 0.1 - 1          |
+| `--sphere_distance`     | Input scaffold design parameter       | 0.1 - 1            |
+| `--delaunay_mesh`    | Input scaffold design parameter | 0.12 - 0.9            |
+| `--delaunay_spacing`    | Input scaffold design parameter | 0.1 - 0.9            |
 
-The output will be stored in the specified output_folder with predictions for scaffold properties.
+A CSV file (`predictions.csv`) containing the predicted values for scaffold properties based on user-defined input parameters will be stored in the specified `output_folder`.
 
 **c. Optimization Tool:**
 
@@ -84,14 +88,17 @@ To use the Optimization Tool, run the following command (bash):
 
     python3 scaffold_optimization.py --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder --desired_outputs  12 70 8 0.05 0.4 --population 10 --generations 20
 
-**Arguments:**
-- **output_folder:** Directory to save prediction results.
-- **model_dir:** Directory containing the trained R models.
-- **scaling_dir:** Directory containing scaling parameters for preprocessing inputs.
-- **desired_outputs:** Target values for scaffold properties, provided as space-separated numbers.
-  -  Example: **12 70 8 0.05 0.4** for Area-to-Volume Ratio, Bone Porosity, Connectivity Density, Trabecular Thickness and Trabecular Spacing.
--  **population:** Number of individuals in the population (default is 50).
--  **generations:** Maximum number of generations for the optimization algorithm (default is 300).
+| Argument           | Description                                                | Default Value / Range of Values |
+|--------------------|------------------------------------------------------------|---------------|
+| `--output_folder`  | Directory to save optimization results                     | Required      |
+| `--model_dir`      | Path to trained R models                                   | Required      |
+| `--scaling_dir`    | Path to scaling parameters                                 | Required      |
+| `--desired_outputs`| Space-separated target values for scaffold properties: Area-to-Volume Ratio, Bone Porosity, Connectivity Density, Trabecular Thickness and Trabecular Spacing      | 4.5 - 28.2 / 39.1 - 100 / 0.3 - 22.9 / 0.02 - 0.2 / 0.09 - 0.93          |
+| `--population`     | Number of individuals in the optimization population       | 50            |
+| `--generations`    | Maximum number of generations for the optimization process | 300           |
+
+**!!!!!** A CSV file (`Optimization_Pareto_Front.csv`) containing non-dominated scaffold configurations that meet user-defined targets.
+- Visualization files (`Optimization_Visualization/`) illustrating optimization progress and results. **!!!!!**
 
 ## Acknowledgements
 The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/), under the Marie Sklodowska-Curie Grant Agreement Action (No. 101086329). 
