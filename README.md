@@ -65,8 +65,8 @@ The Elastic Net Regression models for scaffold properties (Bone Porosity, Area-t
 
 To train the models:
 
-- Navigate to the `scripts/` directory.
-- Execute the R script (train_models.R) with the required input data.
+- Navigate to the `scripts/elastic_net_models` directory.
+- Execute the R scripts (area volume.R , bone porosity.R) with the required input data.
 
 ### b. Prediction Tool
 
@@ -118,21 +118,23 @@ The Optimization Tool refines scaffold parameters to meet user-defined property 
   - `AvgOfAvgGoalsPerGen_plot.png`: Visualizes the average performance of the population across generations. Stabilization indicates convergence toward optimal solutions.
   - `BestPerformancePerGen_plot.png`: Tracks the best-performing individual per generation, showcasing iterative improvement.
 ---
-## Installation Instructions
-Ensure you have the following installed on your system:
+## Installation 
+
+### Prerequisites
 - **Python 3.8+**
 - **R 4.0+**
 
-Install the required Python libraries:
-
+### Steps
+1. Set up Python dependencies:
+    ```bash
     pip install -r requirements.txt
-
-RStudio and install the required packages:
-
-    install.packages(c("glmnet", "caret", "e1071"))
+    ```
+2. Install R dependencies:
+    ```R
+    install.packages(c("glmnet", "caret", "e1071"))    
 
 ---
 
 ## Acknowledgements
-The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/), under the Marie Sklodowska-Curie Grant Agreement Action (No. 101086329). 
+The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme **OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/)**, under the Marie Sklodowska-Curie Grant Agreement Action **(No. 101086329)**. 
   ![image](https://github.com/user-attachments/assets/6ae3e457-66b5-4086-a513-7b50a9c24356) 
