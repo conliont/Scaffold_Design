@@ -37,9 +37,17 @@ The tools are packaged in a user-friendly web interface, providing researchers w
 - **Database**: PostgreSQL
 - **Hosting**: IBM Cloud
 
-## Flowchart of the proposed Scaffold-Based Prediction and Optimization Workflow.
+## Overall Flowchart of the proposed methodology.
+**A. Flowchart of the proposed Scaffold-Based Prediction and Optimization Workflow.**
 ![image](https://github.com/user-attachments/assets/9f536137-fce6-4f49-bc6b-96fe6264c83a)
 
-## Flowchart of the proposed Multi-objective Optimization Algorithm
+The scaffold parameters are used as input into MeshMixer (blue orthogonal box) for scaffold design. Structural scaffold characteristics, such as trabecular thickness and connectivity density, are subsequently calculated (gray orthogonal box). These parameters, along with scaffold characteristics, are used to train ElasticNet Regression models with 5-fold cross-validation (red hexagonal box). The trained models form the foundation for two tools: the Prediction Tool (pink orthogonal box), which estimates scaffold performance based on input design parameters, and the Optimization Tool (pink orthogonal box), which uses a Multi-objective Evolutionary Algorithm to identify non-dominated solutions for scaffold design.
+
+**B. Flowchart of the proposed Multi-objective Optimization Algorithm.**
 ![image](https://github.com/user-attachments/assets/e31f0847-8881-465f-b5d3-3a9228ae160d)
 
+Blue orthogonal shapes denote the algorithm’s steps, while the pink one denotes the output (Pareto Front). The light blue rhomboid denotes the termination criterion (number of generations reached). White orthogonal shapes denote a simplified example of an EA’s chromosome (scaffold configurations). The chromosome consists of the Sphere Diameter (SDm), Sphere Distance (SD), Delaunay Mesh Dimension (DMD), and Delaunay Point Spacing (DPS) variables (presented from left to right). Their range of values is indicated in the brackets above them. 
+
+## Acknowledgements
+The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/), under the Marie Sklodowska-Curie Grant Agreement Action (No. 101086329). 
+  ![image](https://github.com/user-attachments/assets/6ae3e457-66b5-4086-a513-7b50a9c24356) 
