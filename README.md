@@ -38,6 +38,8 @@ The tools are packaged in a user-friendly web interface, providing researchers w
 - **Hosting**: IBM Cloud
 
 ## Flowchart of the proposed Scaffold-Based Prediction and Optimization Workflow.
+![image](https://github.com/user-attachments/assets/9f536137-fce6-4f49-bc6b-96fe6264c83a)
 
 ## Flowchart of the proposed Multi-objective Optimization Algorithm
+![image](https://github.com/user-attachments/assets/e31f0847-8881-465f-b5d3-3a9228ae160d)
 
