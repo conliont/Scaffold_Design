@@ -5,7 +5,7 @@ This repository contains the implementation of **Scaffold Design Tool**, a machi
 
 - **Prediction Tool:** Forecasts scaffold properties (e.g., Bone Porosity, Connectivity Density) based on user-defined inputs (scaffold design parameters).
 
-- **Optimization Tool:** Utilizes a heuristic genetic algorithm to refine scaffold       parameters, enabling users to achieve desired design outcomes.
+- **Optimization Tool:** Utilizes a heuristic genetic algorithm to refine scaffold parameters, enabling users to achieve desired design outcomes.
 
 The tools are packaged in a user-friendly web interface (available at: https://diagnostics.insybio.com/), providing researchers with an accessible platform to design scaffolds that replicate the structural characteristics of healthy and pathological bone tissue.
 
@@ -74,7 +74,7 @@ The Prediction Tool forecasts scaffold properties based on user-provided scaffol
 
 **Command (bash):**
 
-    python3 scaffold_optimization.py --sphere_diameter 0.4 --sphere_distance 0.4 --delaunay_mesh 0.21 --delaunay_spacing 0.1 --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder
+    python3 scaffold_design.py --sphere_diameter 0.4 --sphere_distance 0.4 --delaunay_mesh 0.21 --delaunay_spacing 0.1 --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder
 
 **Arguments:**
 
@@ -97,7 +97,7 @@ The Optimization Tool refines scaffold parameters to meet user-defined property 
 
 **Command (bash):**
 
-    python3 scaffold_optimization.py --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder --desired_outputs  12 70 8 0.05 0.4 --population 10 --generations 20
+    python3 scaffold_design.py --output_folder /PATH/folder/ --model_dir /PATH/model_folder --scaling_dir /PATH/scaling_folder --desired_outputs  12 70 8 0.05 0.4 --population 10 --generations 20
     
 **Arguments:**
 
