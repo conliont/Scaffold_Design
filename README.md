@@ -1,9 +1,10 @@
 ## Scaffold Design Tool for Bone Tissue Engineering
 
-#Overview
+# Overview
 This repository contains the implementation of Scaffold Design Tool, a machine learning (ML) and heuristic optimization-based framework developed to facilitate scaffold design for bone tissue engineering. The platform integrates two customizable tools:
 
-Prediction Tool: Forecasts scaffold properties (e.g., Bone Porosity, Connectivity Density) based on user-defined inputs.
+# Prediction Tool: 
+Forecasts scaffold properties (e.g., Bone Porosity, Connectivity Density) based on user-defined inputs.
 Optimization Tool: Utilizes a heuristic genetic algorithm to refine scaffold parameters, enabling users to achieve desired design outcomes.
 The tools are packaged in a user-friendly web interface, providing researchers with an accessible platform to design scaffolds that replicate the structural characteristics of healthy and pathological bone tissue.
 
