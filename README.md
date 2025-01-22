@@ -41,7 +41,7 @@ The tools are packaged in a user-friendly web interface (available at: https://d
   
 ---
 
-## Overall Flowchart of the proposed methodology.
+## Methodology Flowcharts
 ### A. Flowchart of the proposed Scaffold-Based Prediction and Optimization Workflow.
 ![image](https://github.com/user-attachments/assets/9f536137-fce6-4f49-bc6b-96fe6264c83a)
 
