@@ -135,6 +135,76 @@ The Optimization Tool refines scaffold parameters to meet user-defined property 
 
 ---
 
+## How to create the scaffold library (optional)
+
+### 1. Algorithm for creating the scaffolds remotely
+
+**Overview**
+
+The algorithm was implemented based on the existing code available at this link (https://github.com/meshmixer/mm-api/tree/master), which enables automated and remote access to Meshmixer. Building upon this foundation, the following algorithm was developed to automate the creation of scaffolds using key parameters chosen from the users **(Sphere Distance, Sphere Diameter, Delaunay Mesh Dimension and Delaunay Point Spacing)**. The scaffold creation process was implemented based on the article Eleonora Zenobi et al., ‘Tailoring the Microarchitectures of 3D Printed Bone-like Scaffolds for Tissue Engineering Applications’, Bioengineering 10, no. 5 (May 2023), which details the generation process using Meshmixer to create random scaffolds with a specific porosity and defined characteristics. This approach ensures that the methodology follows established scientific principles for scaffold design. These parameters can be specified within a CSV file, where each row represents a scaffold to be created, allowing users to define the exact number of scaffolds needed. The user is free to modify the code according to their preferred method for scaffold generation, allowing for flexibility in customization and adaptation to specific needs, such as the shape of the scaffold base and the way to create the desired porosity.
+
+**How are scaffolds created using this tool**
+
+1. The base scaffold from which the structure is generated is imported. In this case, it is a parallelepiped, but the user can choose any shape and size according to their preferences.
+   
+   ![image](https://github.com/user-attachments/assets/f89bfa2b-e2ea-4a26-83bc-f17b4d07cf91)
+   
+2. By opening **Make Pattern** and selecting **Random Primitives**, the process to achieve the desired porosity starts. The user selects a sphere diameter and a distance between spheres equal to the sphere diameter. These spheres are then randomly distributed within the parallelepiped by the software, ensuring a controlled yet stochastic scaffold arrangement. After selecting the **Clip to Surface** option, these spheres are subtracted from the parallelepiped, creating the porous structure of the scaffold.
+   
+   <div align="center">
+       <img src="https://github.com/user-attachments/assets/2fe3bcb7-a24c-4820-84c0-3d1f556120cd" width="40%">
+       <img src="https://github.com/user-attachments/assets/f9fd179b-fd0c-4753-ad60-c0158bccd851" width="40%">
+   </div>
+   
+3. Next, by selecting **Make Pattern** again, the **Mesh and Delaunay Edges** options are chosen, allowing the user to define the Mesh Dimension and Point Spacing parameters.
+   
+   <div align="center">
+       <img src="https://github.com/user-attachments/assets/52684c91-8b68-4ec5-a0e3-bc47ff515b37" width="40%">
+       <img src="https://github.com/user-attachments/assets/d409b68e-0d40-4d7d-896f-000363826bc2" width="40%">
+   </div>
+   
+4. Finally, the last two steps involve converting the mesh into a **solid**, allowing it to be imported into software like Autodesk and making it suitable for 3D printing. The final step is an **inspection** to remove any artifacts generated during the process. A **threshold** is set to determine the size of small objects to be eliminated, ensuring a clean and optimized scaffold structure.
+
+**How to use this tool**
+
+    • Python version: 2.7.18 (32-bit)
+    • Meshmixer version: 3.5
+
+1. Set up Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+2. Inside the **random_parameters** file, enter the values for **Sphere Diameter, Sphere Distance, Mesh Delaunay Dimension and Point Spacing Dimension** for all the scaffolds you wish to generate.
+3. Create a **scaffold_base.stl** as the starting structure. In this case, a **10x10x3 mm parallelepiped** was chosen.
+
+To proceed with scaffold creation, it is necessary to open Meshmixer and run the testScaffold.py script. Once the tool is running, the user will be prompted to select the **CSV file** containing the parameters, the **STL file** serving as the base for scaffold construction, and the **destination folder** to save the generated scaffolds.
+
+**Outputs:**
+As output, the tool generates as many STL scaffolds as the number of rows in the previously compiled CSV file. Each scaffold is named according to the parameters specified in the CSV file.
+
+![image](https://github.com/user-attachments/assets/5f457abf-869f-4844-ab7c-9fa49e3408d3)
+
+### 2. Algorithm for calculating scaffold parameters
+
+**Overview**
+
+This algorithm was developed to calculate specific scaffold parameters that can be correlated with bone-related properties. This allows for the identification of the type of bone being reproduced—whether healthy or pathological—and its corresponding shape. Once the script is run, the user selects the folder containing all the previously generated **STL scaffolds** created with the other algorithm. The script then calculates specific parameters that can be used to compare the scaffold with human bone and to distinguish between healthy and pathological bones. The calculated parameters include **Bone Surface/Bone Volume, Porosity, Connectivity Density, Trabecular Thickness, and Trabecular Spacing**. The parameters have been calculated based on the definitions provided on the **BoneJ** website. BoneJ is an open-source software plugin for **ImageJ**, a popular image processing program. BoneJ provides a set of tools designed to analyze and quantify bone microstructure from 2D and 3D images, such as micro-CT scans or MRI data.
+
+    • Python version: 3.11+
+
+Set up Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+**Outputs:**
+The parameters are then saved in an **Excel file** named **"results"**, which will be used to build the database for training the model presented later.
+
+---
+
 ## Acknowledgements
 The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme **OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/)**, under the Marie Sklodowska-Curie Grant Agreement Action **(No. 101086329)**. 
-  ![image](https://github.com/user-attachments/assets/6ae3e457-66b5-4086-a513-7b50a9c24356) 
+
+![image](https://github.com/user-attachments/assets/0d61c66e-27d1-4ba3-8490-d978fa49f08e)
+
+
