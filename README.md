@@ -39,27 +39,11 @@ The tools are packaged in a user-friendly web interface (available at: https://d
 - Backend: Processes user requests, runs Python-based algorithms, and communicates with the database.
 - Database: Manages structured data storage for scaffold parameters, results, and logs.
   
----
-
-## Methodology Flowcharts
-### A. Flowchart of the proposed Scaffold-Based Prediction and Optimization Workflow.
-![image](https://github.com/user-attachments/assets/9f536137-fce6-4f49-bc6b-96fe6264c83a)
-
-The scaffold parameters are used as input into 3D modeling tools e.g. Meshmixer (blue orthogonal box) for scaffold design. Structural characteristics such as trabecular thickness and connectivity density are calculated (gray orthogonal box) and used to train Elastic Net Regression models with 5-fold cross-validation (red hexagonal box). The trained models underpin:
-
-- **Prediction Tool:** Estimates scaffold performance based on user-provided design parameters (pink orthogonal box).
-- **Optimization Tool:** Uses a Multi-objective Evolutionary Algorithm to identify non-dominated solutions (pink orthogonal box).
-
-### Β. Flowchart of the proposed Multi-objective Optimization Algorithm.
-![image](https://github.com/user-attachments/assets/e31f0847-8881-465f-b5d3-3a9228ae160d)
-
-Blue orthogonal shapes denote the algorithm’s steps, while the pink one denotes the output (Pareto Front). The light blue rhomboid denotes the termination criterion (number of generations reached). White orthogonal shapes denote a simplified example of an EA’s chromosome (scaffold configurations). The chromosome consists of the Sphere Diameter (SDm), Sphere Distance (SD), Delaunay Mesh Dimension (DMD), and Delaunay Point Spacing (DPS) variables (presented from left to right). Their range of values is indicated in the brackets above them. 
-
----
 
 ## Tutorial for Using the Tools
 
 ### a. Model Training in R
+[This step is optional. You can download the already trained models from the `models/` directory and use the tools directly.]
 
 The Elastic Net Regression models for scaffold properties (Bone Porosity, Area-to-Volume Ratio, Connectivity Density, Trabecular Spacing, Trabecular Thickness) can be trained using the R script provided in the `scripts/` directory.
 
@@ -134,7 +118,12 @@ The Optimization Tool refines scaffold parameters to meet user-defined property 
     install.packages(c("glmnet", "caret", "e1071"))    
 
 ---
+## Access to the Web Interface
+The web interface is available at: https://diagnostics.insybio.com
 
+If you would like to use the platform, please contact us to request a free account. 
+
+---
 ## How to create the scaffold library (optional)
 
 ### 1. Algorithm for creating the scaffolds remotely
@@ -147,22 +136,24 @@ The algorithm was implemented based on the existing code available at this link 
 
 1. The base scaffold from which the structure is generated is imported. In this case, it is a parallelepiped, but the user can choose any shape and size according to their preferences.
    
-   ![image](https://github.com/user-attachments/assets/f89bfa2b-e2ea-4a26-83bc-f17b4d07cf91)
+   <div align="center">
+       <img src="https://github.com/user-attachments/assets/99741639-d70d-419c-a62a-79bf77d76ecd" width="40%">
+   </div>
    
 2. By opening **Make Pattern** and selecting **Random Primitives**, the process to achieve the desired porosity starts. The user selects a sphere diameter and a distance between spheres equal to the sphere diameter. These spheres are then randomly distributed within the parallelepiped by the software, ensuring a controlled yet stochastic scaffold arrangement. After selecting the **Clip to Surface** option, these spheres are subtracted from the parallelepiped, creating the porous structure of the scaffold.
    
    <div align="center">
-       <img src="https://github.com/user-attachments/assets/2fe3bcb7-a24c-4820-84c0-3d1f556120cd" width="40%">
-       <img src="https://github.com/user-attachments/assets/f9fd179b-fd0c-4753-ad60-c0158bccd851" width="40%">
+       <img src="https://github.com/user-attachments/assets/6de5e6ae-c258-47a4-affd-87ac51817714" width="40%">
+       <img src="https://github.com/user-attachments/assets/43cd843a-1877-4a4b-be82-61050e59efc4" width="40%">
    </div>
-   
+
 3. Next, by selecting **Make Pattern** again, the **Mesh and Delaunay Edges** options are chosen, allowing the user to define the Mesh Dimension and Point Spacing parameters.
    
    <div align="center">
-       <img src="https://github.com/user-attachments/assets/52684c91-8b68-4ec5-a0e3-bc47ff515b37" width="40%">
-       <img src="https://github.com/user-attachments/assets/d409b68e-0d40-4d7d-896f-000363826bc2" width="40%">
+       <img src="https://github.com/user-attachments/assets/f1db5718-00b5-41e2-a49e-a93a1a420a39" width="40%">
+       <img src="https://github.com/user-attachments/assets/787c1018-e83d-4d51-8361-9ba423fc59c6" width="40%">
    </div>
-   
+
 4. Finally, the last two steps involve converting the mesh into a **solid**, allowing it to be imported into software like Autodesk and making it suitable for 3D printing. The final step is an **inspection** to remove any artifacts generated during the process. A **threshold** is set to determine the size of small objects to be eliminated, ensuring a clean and optimized scaffold structure.
 
 **How to use this tool**
@@ -175,6 +166,11 @@ The algorithm was implemented based on the existing code available at this link 
     pip install -r requirements.txt
     ```
 2. Inside the **random_parameters** file, enter the values for **Sphere Diameter, Sphere Distance, Mesh Delaunay Dimension and Point Spacing Dimension** for all the scaffolds you wish to generate.
+   <div align="center">
+       <img src="https://github.com/user-attachments/assets/1028acd8-e738-4439-a1a9-85ea958f0a94" width="40%">
+   </div>
+
+
 3. Create a **scaffold_base.stl** as the starting structure. In this case, a **10x10x3 mm parallelepiped** was chosen.
 
 To proceed with scaffold creation, it is necessary to open Meshmixer and run the testScaffold.py script. Once the tool is running, the user will be prompted to select the **CSV file** containing the parameters, the **STL file** serving as the base for scaffold construction, and the **destination folder** to save the generated scaffolds.
@@ -182,7 +178,8 @@ To proceed with scaffold creation, it is necessary to open Meshmixer and run the
 **Outputs:**
 As output, the tool generates as many STL scaffolds as the number of rows in the previously compiled CSV file. Each scaffold is named according to the parameters specified in the CSV file.
 
-![image](https://github.com/user-attachments/assets/5f457abf-869f-4844-ab7c-9fa49e3408d3)
+![image](https://github.com/user-attachments/assets/68a25c3b-70a3-4d99-90c7-b86a4ff61bbf)
+
 
 ### 2. Algorithm for calculating scaffold parameters
 
@@ -198,13 +195,13 @@ Set up Python dependencies:
     ```
 
 **Outputs:**
-The parameters are then saved in an **Excel file** named **"results"**, which will be used to build the database for training the model presented later.
+The parameters are then saved in an **Excel file** named **"results"**, which will be used to build the database for training the model presented previously.
 
 ---
 
 ## Acknowledgements
+
 The present work has been developed with the funding support from the European Union’s Horizon Europe research and innovation programme **OSTEONET (In vitro 3d cells models of healthy and OSTEOpathological ageing bone tissue for implantation and drug testing in a multidisciplinary NETwork, https://osteonethorizon.com/)**, under the Marie Sklodowska-Curie Grant Agreement Action **(No. 101086329)**. 
 
-![image](https://github.com/user-attachments/assets/0d61c66e-27d1-4ba3-8490-d978fa49f08e)
-
+![image](https://github.com/user-attachments/assets/4dde35fc-0256-4d87-a7ff-8801807e681e)
 
