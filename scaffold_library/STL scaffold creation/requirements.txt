@@ -1,0 +1,4 @@
+#Python version: 2.7.18 32-bit
+pandas
+pywin32
+psutil
